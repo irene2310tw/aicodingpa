@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Coding Party 2026 回饋問卷</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#EDF6F9;font-family:'Nunito',sans-serif;min-height:100vh;padding:2rem 1rem 4rem;}
+.wrap{max-width:620px;margin:0 auto;}
+.card{background:#fff;border-radius:24px;border:2.5px solid #A8CCDC;padding:1.5rem 1.75rem;margin-bottom:1.25rem;}
+.header-card{background:#EDF6F9;border-color:#A8CCDC;text-align:center;padding:2rem 1.5rem;}
+.deco{font-size:32px;line-height:1;margin-bottom:0.5rem;}
+.year-badge{display:inline-block;background:#4D72B0;color:#fff;font-size:11px;font-weight:800;padding:3px 12px;border-radius:20px;margin-bottom:0.75rem;letter-spacing:1px;}
+.header-card h1{font-size:22px;font-weight:800;color:#2D5088;margin-bottom:0.4rem;}
+.header-card p{font-size:13px;color:#5A88B8;line-height:1.6;}
+.bubbles{display:flex;gap:6px;justify-content:center;margin-top:1rem;}
+.bubble{width:10px;height:10px;border-radius:50%;background:#A8CCDC;transition:all .3s;}
+.bubble.active{background:#4D72B0;transform:scale(1.3);}
+.step{display:none;}
+.step.active{display:block;animation:pop .3s cubic-bezier(.34,1.56,.64,1);}
+@keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+.qlabel{font-size:11px;font-weight:800;color:#7AAFD4;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+.qtitle{font-size:15px;font-weight:700;color:#2D5088;margin-bottom:4px;line-height:1.5;}
+.qsub{font-size:12px;color:#5A88B8;margin-bottom:1rem;}
+.stars{display:flex;gap:6px;margin-bottom:6px;}
+.star{font-size:30px;cursor:pointer;transition:transform .15s;opacity:.25;user-select:none;}
+.star.lit{opacity:1;transform:scale(1.15);}
+.star-hint{font-size:12px;color:#5A88B8;font-weight:600;margin-bottom:1rem;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1rem;}
+.chip{padding:7px 14px;border-radius:20px;border:2px solid #C5E0DC;font-size:13px;font-weight:700;color:#5A88B8;cursor:pointer;background:#F4FAFC;transition:all .15s;font-family:'Nunito',sans-serif;}
+.chip:hover{border-color:#7AAFD4;color:#2D5088;}
+.chip.on{background:#C5E0DC;border-color:#7AAFD4;color:#2D5088;}
+.scale-wrap{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;}
+.scb{width:42px;height:42px;border-radius:14px;border:2px solid #C5E0DC;font-size:13px;font-weight:800;cursor:pointer;background:#F4FAFC;color:#5A88B8;transition:all .15s;font-family:'Nunito',sans-serif;}
+.scb:hover{border-color:#7AAFD4;background:#C5E0DC;}
+.scb.on{background:#4D72B0;color:#fff;border-color:#4D72B0;transform:scale(1.1);}
+.scale-ends{display:flex;justify-content:space-between;font-size:11px;color:#5A88B8;font-weight:600;margin-bottom:1rem;}
+.radio-group{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;}
+.radio-opt{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:16px;border:2px solid #C5E0DC;background:#F4FAFC;cursor:pointer;transition:all .15s;}
+.radio-opt:hover{border-color:#7AAFD4;}
+.radio-opt.on{background:#EDF6F9;border-color:#7AAFD4;}
+.radio-dot{width:18px;height:18px;border-radius:50%;border:2px solid #A8CCDC;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.radio-opt.on .radio-dot{background:#4D72B0;border-color:#4D72B0;}
+.radio-dot::after{content:'';width:7px;height:7px;border-radius:50%;background:#fff;display:none;}
+.radio-opt.on .radio-dot::after{display:block;}
+.radio-text{font-size:13px;font-weight:700;color:#2D5088;line-height:1.5;}
+.radio-sub{font-size:12px;color:#5A88B8;font-weight:400;margin-top:2px;}
+.other-label{font-size:12px;color:#7AAFD4;font-weight:700;margin-top:12px;margin-bottom:4px;}
+.add-input{width:100%;padding:10px 14px;border-radius:14px;border:2px solid #C5E0DC;font-size:13px;font-family:'Nunito',sans-serif;color:#2D5088;background:#F4FAFC;outline:none;font-weight:600;}
+.add-input:focus{border-color:#7AAFD4;}
+.add-input::placeholder{color:#A8CCDC;font-weight:400;}
+textarea{width:100%;padding:10px 14px;border-radius:14px;border:2px solid #C5E0DC;font-size:13px;font-family:'Nunito',sans-serif;color:#2D5088;background:#F4FAFC;resize:vertical;min-height:80px;line-height:1.6;font-weight:600;outline:none;}
+textarea:focus{border-color:#7AAFD4;}
+textarea::placeholder{color:#A8CCDC;font-weight:400;}
+.btn-row{display:flex;gap:10px;justify-content:flex-end;margin-top:1.25rem;}
+.btn{padding:10px 22px;border-radius:20px;font-size:14px;font-weight:800;cursor:pointer;border:2px solid #C5E0DC;transition:all .15s;font-family:'Nunito',sans-serif;}
+.btn-ghost{background:#F4FAFC;color:#5A88B8;}
+.btn-ghost:hover{background:#C5E0DC;}
+.btn-main{background:#4D72B0;color:#fff;border-color:#4D72B0;}
+.btn-main:hover{background:#2D5088;border-color:#2D5088;}
+.btn-main:disabled{opacity:0.6;cursor:not-allowed;}
+.done-card{background:#EDF6F9;border-color:#A8CCDC;text-align:center;padding:3rem 1.5rem;}
+.done-big{font-size:48px;margin-bottom:0.75rem;}
+.done-card h2{font-size:20px;font-weight:800;color:#2D5088;margin-bottom:0.5rem;}
+.done-card p{font-size:13px;color:#5A88B8;line-height:1.6;}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:#2D5088;color:#fff;padding:10px 24px;border-radius:20px;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999;}
+.toast.show{opacity:1;}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="card header-card">
+    <div class="deco">🎉✨🤖</div>
+    <div class="year-badge">2026</div>
+    <h1>AI Coding Party 回饋問卷</h1>
+    <p>謝謝你今天的參與，超開心有你在！<br>花 2 分鐘告訴我們你的想法吧 ☆</p>
+    <div class="bubbles">
+      <div class="bubble active" id="b1"></div>
+      <div class="bubble" id="b2"></div>
+      <div class="bubble" id="b3"></div>
+      <div class="bubble" id="b4"></div>
+    </div>
+  </div>
+
+  <!-- Step 1 -->
+  <div class="step active" id="step1">
+    <div class="card">
+      <div class="qlabel">整體體驗 ✦</div>
+      <div class="qtitle">今天的活動，你整體滿意程度？</div>
+      <div class="qsub">點一下星星來評分吧！</div>
+      <div class="stars" id="stars">
+        <span class="star" data-v="1">⭐</span>
+        <span class="star" data-v="2">⭐</span>
+        <span class="star" data-v="3">⭐</span>
+        <span class="star" data-v="4">⭐</span>
+        <span class="star" data-v="5">⭐</span>
+      </div>
+      <div class="star-hint" id="star-hint">尚未評分</div>
+      <div class="other-label">想補充說明嗎？</div>
+      <input class="add-input" id="starNote" placeholder="說說你的感受...（可不填）">
+    </div>
+    <div class="card">
+      <div class="qlabel">最愛環節 ✦</div>
+      <div class="qtitle">你最享受哪個部分？</div>
+      <div class="qsub">可以複選喔！</div>
+      <div class="chips" id="enjoy">
+        <div class="chip" data-g="enjoy">實作動手做</div>
+        <div class="chip" data-g="enjoy">AI 工具介紹</div>
+        <div class="chip" data-g="enjoy">成果分享展示</div>
+        <div class="chip" data-g="enjoy">交流討論</div>
+        <div class="chip" data-g="enjoy">整個流程</div>
+        <div class="chip" data-g="enjoy">認識新朋友</div>
+      </div>
+      <div class="other-label">其他想補充的？</div>
+      <input class="add-input" id="enjoyNote" placeholder="例如：我最喜歡...（可不填）">
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-main" onclick="go(2)">下一步 →</button>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="step" id="step2">
+    <div class="card">
+      <div class="qlabel">內容感受 ✦</div>
+      <div class="qtitle">這次 AI Coding 的難度對你來說？</div>
+      <div class="qsub">1 = 太簡單，5 = 太難</div>
+      <div class="scale-wrap" id="diff">
+        <button class="scb" data-g="diff">1</button>
+        <button class="scb" data-g="diff">2</button>
+        <button class="scb" data-g="diff">3</button>
+        <button class="scb" data-g="diff">4</button>
+        <button class="scb" data-g="diff">5</button>
+      </div>
+      <div class="scale-ends"><span>太簡單</span><span>太難</span></div>
+      <div class="other-label">想補充原因嗎？</div>
+      <input class="add-input" id="diffNote" placeholder="例如：希望可以更深入一點...（可不填）">
+    </div>
+    <div class="card">
+      <div class="qlabel">收穫 ✦</div>
+      <div class="qtitle">你在這次活動中學到了什麼？</div>
+      <div class="qsub">可以複選！</div>
+      <div class="chips" id="learned">
+        <div class="chip" data-g="learned">AI 工具使用技巧</div>
+        <div class="chip" data-g="learned">Prompt 撰寫方法</div>
+        <div class="chip" data-g="learned">如何把 AI 用在工作上</div>
+        <div class="chip" data-g="learned">與同事合作新方式</div>
+        <div class="chip" data-g="learned">從零開始寫程式的勇氣</div>
+        <div class="chip" data-g="learned">其他工具或平台</div>
+      </div>
+      <div class="other-label">還有其他收穫嗎？</div>
+      <input class="add-input" id="learnedNote" placeholder="例如：我意外學到了...（可不填）">
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="go(1)">← 上一步</button>
+      <button class="btn btn-main" onclick="go(3)">下一步 →</button>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="step" id="step3">
+    <div class="card">
+      <div class="qlabel">Team Building x AI 💡</div>
+      <div class="qtitle">你願意讓每季的 Team Building 結合 AI Coding Party 一起舉行嗎？</div>
+      <div class="qsub">選一個最符合你想法的選項！</div>
+      <div class="radio-group" id="tb">
+        <div class="radio-opt" onclick="pickRadio(this)">
+          <div class="radio-dot"></div>
+          <div><div class="radio-text">非常願意！這個 idea 超棒</div><div class="radio-sub">就照今天這個形式結合 AI Coding Party 辦，很喜歡</div></div>
+        </div>
+        <div class="radio-opt" onclick="pickRadio(this)">
+          <div class="radio-dot"></div>
+          <div><div class="radio-text">願意，但希望調整形式</div><div class="radio-sub">結合 AI Coding Party 可以，但想加入其他活動元素或更輕鬆一點</div></div>
+        </div>
+        <div class="radio-opt" onclick="pickRadio(this)">
+          <div class="radio-dot"></div>
+          <div><div class="radio-text">可以考慮，但每季可能太頻繁</div><div class="radio-sub">結合 AI Coding Party 的方向不錯，也許半年一次會更好</div></div>
+        </div>
+        <div class="radio-opt" onclick="pickRadio(this)">
+          <div class="radio-dot"></div>
+          <div><div class="radio-text">不太確定，想多了解看看</div><div class="radio-sub">對結合 AI Coding Party 有興趣，但還需要更多資訊</div></div>
+        </div>
+        <div class="radio-opt" onclick="pickRadio(this)">
+          <div class="radio-dot"></div>
+          <div><div class="radio-text">不太建議結合</div><div class="radio-sub">Team Building 和 AI Coding Party 分開辦比較好</div></div>
+        </div>
+      </div>
+      <div class="other-label">有其他想法或建議嗎？</div>
+      <textarea id="tbIdea" placeholder="例如：可以加入桌遊、戶外挑戰、小組競賽，或是你對 AI Coding Party 結合 Team Building 的任何點子！（可不填）"></textarea>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="go(2)">← 上一步</button>
+      <button class="btn btn-main" onclick="go(4)">下一步 →</button>
+    </div>
+  </div>
+
+  <!-- Step 4 -->
+  <div class="step" id="step4">
+    <div class="card">
+      <div class="qlabel">推薦指數 ✦</div>
+      <div class="qtitle">你會推薦同事來參加下次活動嗎？</div>
+      <div class="qsub">0 = 不會，10 = 超強力推薦！</div>
+      <div class="scale-wrap" id="nps">
+        <button class="scb" data-g="nps" style="width:38px;height:38px;font-size:12px;">0</button>
+        <button class="scb" data-g="nps" style="width:38px;height:38px;font-size:12px;">1</button>
+        <button class="scb" data-g="nps" style="width:38px;height:38px;font-size:12px;">2</button>
+        <button class="scb" data-g="nps" style="width:38px;height:38px;font-size:12px;">3</button>
+        <button class="scb" data-g="nps" style="width:38px;height:38px;font-size:12px;">4</button>
+        <button class="scb" data-g="nps" style="width:38px;height:38px;font-size:12px;">5</button>
+        <button class="scb" data-g="nps" style="width:38px;height:38px;font-size:12px;">6</button>
+        <button class="scb" data-g="nps" style="width:38px;height:38px;font-size:12px;">7</button>
+        <button class="scb" data-g="nps" style="width:38px;height:38px;font-size:12px;">8</button>
+        <button class="scb" data-g="nps" style="width:38px;height:38px;font-size:12px;">9</button>
+        <button class="scb" data-g="nps" style="width:38px;height:38px;font-size:12px;">10</button>
+      </div>
+      <div class="scale-ends"><span>不會推薦</span><span>強力推薦！</span></div>
+      <div class="other-label">為什麼這樣選呢？</div>
+      <input class="add-input" id="npsNote" placeholder="說說你的理由...（可不填）">
+    </div>
+    <div class="card">
+      <div class="qlabel">下次主題 ✦</div>
+      <div class="qtitle">下次活動你希望看到什麼主題？</div>
+      <div class="qsub">可以複選！</div>
+      <div class="chips" id="next">
+        <div class="chip" data-g="next">AI 自動化工作流</div>
+        <div class="chip" data-g="next">用 AI 做資料分析</div>
+        <div class="chip" data-g="next">AI 圖像生成應用</div>
+        <div class="chip" data-g="next">打造自己的 AI 助理</div>
+        <div class="chip" data-g="next">AI x 行銷創意</div>
+        <div class="chip" data-g="next">進階 Prompt 工程</div>
+      </div>
+      <div class="other-label">有其他主題想提議嗎？</div>
+      <input class="add-input" id="nextNote" placeholder="例如：我想學...（可不填）">
+    </div>
+    <div class="card">
+      <div class="qlabel">自由心聲 ✦</div>
+      <div class="qtitle">還有什麼想說的嗎？</div>
+      <div class="qsub">建議、感謝、吐槽都歡迎！</div>
+      <textarea id="freeText" placeholder="在這裡打下任何想法..."></textarea>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="go(3)">← 上一步</button>
+      <button class="btn btn-main" id="submitBtn" onclick="submitForm()">送出回饋 ✨</button>
+    </div>
+  </div>
+
+  <!-- Done -->
+  <div class="step" id="step5">
+    <div class="card done-card">
+      <div class="done-big">🎊🤖💙</div>
+      <h2>謝謝你的回饋！</h2>
+      <p>你的意見對我們超級無敵重要！<br>期待在下一次的 AI Coding Party 再見到你 ✨</p>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ★ 把這裡換成你的 Apps Script 網址
+const SCRIPT_URL = "https://script.google.com/a/macros/garena.com/s/AKfycbwh6h5ve65FhOJxEVgZLLw6meRFo7-hdHk8kSEu5EU8f-cAEFw9OoEwP_TH5OmFswazTw/exec";
+
+const starHints = ['','有點失望 😕','還好普通 😊','不錯喔！ 😄','很滿意！ 🥰','超級棒！ 🤩'];
+let starVal = 0;
+let selectedTB = '';
+
+document.querySelectorAll('#stars .star').forEach(s => {
+  s.addEventListener('click', () => {
+    starVal = +s.dataset.v;
+    document.querySelectorAll('#stars .star').forEach((x, i) => x.classList.toggle('lit', i < starVal));
+    document.getElementById('star-hint').textContent = starHints[starVal];
+  });
+});
+
+document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => c.classList.toggle('on')));
+
+document.querySelectorAll('.scb').forEach(b => {
+  b.addEventListener('click', () => {
+    const g = b.dataset.g;
+    document.querySelectorAll(`.scb[data-g="${g}"]`).forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+  });
+});
+
+function pickRadio(el) {
+  document.querySelectorAll('.radio-opt').forEach(x => x.classList.remove('on'));
+  el.classList.add('on');
+  selectedTB = el.querySelector('.radio-text').textContent;
+}
+
+function getChips(groupId) {
+  return [...document.querySelectorAll(`#${groupId} .chip.on`)]
+    .map(c => c.textContent).join('、');
+}
+
+function getScale(groupId) {
+  const on = document.querySelector(`.scb[data-g="${groupId}"].on`);
+  return on ? on.textContent : '';
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function go(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step' + n).classList.add('active');
+  [1,2,3,4].forEach(i => document.getElementById('b'+i).classList.toggle('active', i <= n));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+async function submitForm() {
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = '送出中...';
+
+  const payload = {
+    starRating: starVal,
+    starNote: document.getElementById('starNote').value,
+    enjoy: getChips('enjoy'),
+    enjoyNote: document.getElementById('enjoyNote').value,
+    difficulty: getScale('diff'),
+    diffNote: document.getElementById('diffNote').value,
+    learned: getChips('learned'),
+    learnedNote: document.getElementById('learnedNote').value,
+    teamBuilding: selectedTB,
+    tbIdea: document.getElementById('tbIdea').value,
+    nps: getScale('nps'),
+    npsNote: document.getElementById('npsNote').value,
+    nextTopic: getChips('next'),
+    nextNote: document.getElementById('nextNote').value,
+    freeText: document.getElementById('freeText').value
+  };
+
+  try {
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    go(5);
+    document.querySelectorAll('.bubble').forEach(b => b.classList.add('active'));
+  } catch (err) {
+    showToast('送出失敗，請再試一次 😢');
+    btn.disabled = false;
+    btn.textContent = '送出回饋 ✨';
+  }
+}
+</script>
+</body>
+</html>
