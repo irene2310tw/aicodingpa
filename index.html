@@ -70,7 +70,6 @@ textarea::placeholder{color:#A8CCDC;font-weight:400;}
 </style>
 </head>
 <body>
-
 <div class="wrap">
   <div class="card header-card">
     <div class="deco">🎉✨🤖</div>
@@ -85,7 +84,6 @@ textarea::placeholder{color:#A8CCDC;font-weight:400;}
     </div>
   </div>
 
-  <!-- Step 1 -->
   <div class="step active" id="step1">
     <div class="card">
       <div class="qlabel">整體體驗 ✦</div>
@@ -107,12 +105,12 @@ textarea::placeholder{color:#A8CCDC;font-weight:400;}
       <div class="qtitle">你最享受哪個部分？</div>
       <div class="qsub">可以複選喔！</div>
       <div class="chips" id="enjoy">
-        <div class="chip" data-g="enjoy">實作動手做</div>
-        <div class="chip" data-g="enjoy">AI 工具介紹</div>
-        <div class="chip" data-g="enjoy">成果分享展示</div>
-        <div class="chip" data-g="enjoy">交流討論</div>
-        <div class="chip" data-g="enjoy">整個流程</div>
-        <div class="chip" data-g="enjoy">認識新朋友</div>
+        <div class="chip">實作動手做</div>
+        <div class="chip">AI 工具介紹</div>
+        <div class="chip">成果分享展示</div>
+        <div class="chip">交流討論</div>
+        <div class="chip">整個流程</div>
+        <div class="chip">認識新朋友</div>
       </div>
       <div class="other-label">其他想補充的？</div>
       <input class="add-input" id="enjoyNote" placeholder="例如：我最喜歡...（可不填）">
@@ -122,7 +120,6 @@ textarea::placeholder{color:#A8CCDC;font-weight:400;}
     </div>
   </div>
 
-  <!-- Step 2 -->
   <div class="step" id="step2">
     <div class="card">
       <div class="qlabel">內容感受 ✦</div>
@@ -144,12 +141,12 @@ textarea::placeholder{color:#A8CCDC;font-weight:400;}
       <div class="qtitle">你在這次活動中學到了什麼？</div>
       <div class="qsub">可以複選！</div>
       <div class="chips" id="learned">
-        <div class="chip" data-g="learned">AI 工具使用技巧</div>
-        <div class="chip" data-g="learned">Prompt 撰寫方法</div>
-        <div class="chip" data-g="learned">如何把 AI 用在工作上</div>
-        <div class="chip" data-g="learned">與同事合作新方式</div>
-        <div class="chip" data-g="learned">從零開始寫程式的勇氣</div>
-        <div class="chip" data-g="learned">其他工具或平台</div>
+        <div class="chip">AI 工具使用技巧</div>
+        <div class="chip">Prompt 撰寫方法</div>
+        <div class="chip">如何把 AI 用在工作上</div>
+        <div class="chip">與同事合作新方式</div>
+        <div class="chip">從零開始寫程式的勇氣</div>
+        <div class="chip">其他工具或平台</div>
       </div>
       <div class="other-label">還有其他收穫嗎？</div>
       <input class="add-input" id="learnedNote" placeholder="例如：我意外學到了...（可不填）">
@@ -160,7 +157,6 @@ textarea::placeholder{color:#A8CCDC;font-weight:400;}
     </div>
   </div>
 
-  <!-- Step 3 -->
   <div class="step" id="step3">
     <div class="card">
       <div class="qlabel">Team Building x AI 💡</div>
@@ -197,7 +193,6 @@ textarea::placeholder{color:#A8CCDC;font-weight:400;}
     </div>
   </div>
 
-  <!-- Step 4 -->
   <div class="step" id="step4">
     <div class="card">
       <div class="qlabel">推薦指數 ✦</div>
@@ -225,12 +220,12 @@ textarea::placeholder{color:#A8CCDC;font-weight:400;}
       <div class="qtitle">下次活動你希望看到什麼主題？</div>
       <div class="qsub">可以複選！</div>
       <div class="chips" id="next">
-        <div class="chip" data-g="next">AI 自動化工作流</div>
-        <div class="chip" data-g="next">用 AI 做資料分析</div>
-        <div class="chip" data-g="next">AI 圖像生成應用</div>
-        <div class="chip" data-g="next">打造自己的 AI 助理</div>
-        <div class="chip" data-g="next">AI x 行銷創意</div>
-        <div class="chip" data-g="next">進階 Prompt 工程</div>
+        <div class="chip">AI 自動化工作流</div>
+        <div class="chip">用 AI 做資料分析</div>
+        <div class="chip">AI 圖像生成應用</div>
+        <div class="chip">打造自己的 AI 助理</div>
+        <div class="chip">AI x 行銷創意</div>
+        <div class="chip">進階 Prompt 工程</div>
       </div>
       <div class="other-label">有其他主題想提議嗎？</div>
       <input class="add-input" id="nextNote" placeholder="例如：我想學...（可不填）">
@@ -247,7 +242,6 @@ textarea::placeholder{color:#A8CCDC;font-weight:400;}
     </div>
   </div>
 
-  <!-- Done -->
   <div class="step" id="step5">
     <div class="card done-card">
       <div class="done-big">🎊🤖💙</div>
@@ -260,8 +254,8 @@ textarea::placeholder{color:#A8CCDC;font-weight:400;}
 <div class="toast" id="toast"></div>
 
 <script>
-// ★ 把這裡換成你的 Apps Script 網址
-const SCRIPT_URL = "https://script.google.com/a/macros/garena.com/s/AKfycbwh6h5ve65FhOJxEVgZLLw6meRFo7-hdHk8kSEu5EU8f-cAEFw9OoEwP_TH5OmFswazTw/exec";
+const SUPABASE_URL = "https://pshzzplrlyaqrckszyyм.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzaHp6cGxybHlhcXJja3N6eXltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwNDcyODQsImV4cCI6MjA5MzYyMzI4NH0.8DrKl-wxHP9Mq_amDQ1ttAiMAgP6G-CkV2rK3sQohas";
 
 const starHints = ['','有點失望 😕','還好普通 😊','不錯喔！ 😄','很滿意！ 🥰','超級棒！ 🤩'];
 let starVal = 0;
@@ -292,8 +286,7 @@ function pickRadio(el) {
 }
 
 function getChips(groupId) {
-  return [...document.querySelectorAll(`#${groupId} .chip.on`)]
-    .map(c => c.textContent).join('、');
+  return [...document.querySelectorAll(`#${groupId} .chip.on`)].map(c => c.textContent).join('、');
 }
 
 function getScale(groupId) {
@@ -321,34 +314,48 @@ async function submitForm() {
   btn.textContent = '送出中...';
 
   const payload = {
-    starRating: starVal,
-    starNote: document.getElementById('starNote').value,
+    star_rating: starVal,
+    star_note: document.getElementById('starNote').value,
     enjoy: getChips('enjoy'),
-    enjoyNote: document.getElementById('enjoyNote').value,
+    enjoy_note: document.getElementById('enjoyNote').value,
     difficulty: getScale('diff'),
-    diffNote: document.getElementById('diffNote').value,
+    diff_note: document.getElementById('diffNote').value,
     learned: getChips('learned'),
-    learnedNote: document.getElementById('learnedNote').value,
-    teamBuilding: selectedTB,
-    tbIdea: document.getElementById('tbIdea').value,
+    learned_note: document.getElementById('learnedNote').value,
+    team_building: selectedTB,
+    tb_idea: document.getElementById('tbIdea').value,
     nps: getScale('nps'),
-    npsNote: document.getElementById('npsNote').value,
-    nextTopic: getChips('next'),
-    nextNote: document.getElementById('nextNote').value,
-    freeText: document.getElementById('freeText').value
+    nps_note: document.getElementById('npsNote').value,
+    next_topic: getChips('next'),
+    next_note: document.getElementById('nextNote').value,
+    free_text: document.getElementById('freeText').value
   };
 
   try {
-    await fetch(SCRIPT_URL, {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/feedback`, {
       method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Prefer': 'return=minimal'
+      },
       body: JSON.stringify(payload)
     });
-    go(5);
-    document.querySelectorAll('.bubble').forEach(b => b.classList.add('active'));
+
+    if (res.ok) {
+      go(5);
+      document.querySelectorAll('.bubble').forEach(b => b.classList.add('active'));
+    } else {
+      const err = await res.text();
+      console.error(err);
+      showToast('送出失敗，請再試一次 😢');
+      btn.disabled = false;
+      btn.textContent = '送出回饋 ✨';
+    }
   } catch (err) {
-    showToast('送出失敗，請再試一次 😢');
+    console.error(err);
+    showToast('網路錯誤，請再試一次 😢');
     btn.disabled = false;
     btn.textContent = '送出回饋 ✨';
   }
